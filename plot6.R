@@ -1,5 +1,5 @@
 # Compare emissions from motor vehicle sources in Baltimore City with emissions
-# from motor vehicle sources in Los Angeles County, California (fips == "06037"). 
+# from motor vehicle sources in Los Angeles County, California (fips == "06037").
 # Which city has seen greater changes over time in motor vehicle emissions?
 
 # First, read the dataset given by the assignment
@@ -25,12 +25,12 @@ mobile_em[fips == "06037", cityname := "Los Angeles County, California"]
 mobile_em[fips == "24510", cityname := "Baltimore City, Maryland"]
 
 
-# plot the result using ggplot system and save to png.
+# plot the result using ggplot2 system and save to png.
 library(ggplot2)
 png("plot6.png", bg = "transparent", width = 600, height = 480)
 p <- ggplot(mobile_em, aes(year, mobileem))
 p <- p + geom_point(aes(colour = cityname)) + geom_line(aes(colour = cityname))
 p <- p + labs(x = "year", y = "Emissions (ton)",
-              title = "Comparison of Total Emission in 3 Years in US from Motor Vehicle between Baltiore and Los Angeles") 
+              title = "Comparison of Total Emission in 3 Years in US from Motor Vehicle between Baltiore and Los Angeles")
 p
 dev.off()

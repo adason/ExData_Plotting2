@@ -1,4 +1,4 @@
-# Across the United States, how have emissions from coal combustion-related 
+# Across the United States, how have emissions from coal combustion-related
 # sources changed from 1999–2008?
 
 # First, read the dataset given by the assignment
@@ -19,12 +19,12 @@ nei_coalscc <- merge(NEI, coal_scc, by = "SCC")
 coal_em <- nei_coalscc[, sum(Emissions), by = year]
 setnames(coal_em, "V1", "coalem")
 
-# plot the result using base system and save to png.
+# plot the result using ggplot2 system and save to png.
 library(ggplot2)
 png("plot4.png", bg = "transparent", width = 600, height = 480)
 p <- ggplot(coal_em, aes(year, coalem))
 p <- p + geom_point(colour = "blue") + geom_line(colour = "blue")
 p <- p + labs(x = "year", y = "Emissions (ton)",
-              title = "Total Emission in 3 Years in US from Coal Source")          
+              title = "Total Emission in 3 Years in US from Coal Source")
 p
 dev.off()

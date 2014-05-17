@@ -1,4 +1,4 @@
-# How have emissions from motor vehicle sources changed from 1999–2008 
+# How have emissions from motor vehicle sources changed from 1999–2008
 # in Baltimore City?
 
 # First, read the dataset given by the assignment
@@ -19,12 +19,12 @@ nei_mobilescc <- merge(NEI, mobile_scc, by = "SCC")
 mobile_em <- nei_mobilescc[fips == "24510", sum(Emissions), by = year]
 setnames(mobile_em, "V1", "mobileem")
 
-# plot the result using base system and save to png.
+# plot the result using ggplot2 system and save to png.
 library(ggplot2)
 png("plot5.png", bg = "transparent", width = 600, height = 480)
 p <- ggplot(mobile_em, aes(year, mobileem))
 p <- p + geom_point(colour = "blue") + geom_line(colour = "blue")
 p <- p + labs(x = "year", y = "Emissions (ton)",
-              title = "Total Emission in 3 Years in US from Motor Vehicle in Baltiore")          
+              title = "Total Emission in 3 Years in US from Motor Vehicle in Baltiore")
 p
 dev.off()
