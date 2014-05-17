@@ -12,7 +12,7 @@ library(data.table)
 NEI <- data.table(NEI)
 SCC <- data.table(SCC)
 
-# Take sum of total emission in Baltimore, group by year
+# Take sum of total emission in Baltimore, group by year and type
 em_bal_bytype <- NEI[fips == "24510", sum(Emissions), by = list(type, year)]
 setnames(em_bal_bytype, "V1", "embalbytype")
 
