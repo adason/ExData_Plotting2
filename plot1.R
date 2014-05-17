@@ -14,10 +14,12 @@ SCC <- data.table(SCC)
 # Take sum of total emission, group by year
 emission_year <- NEI[, sum(Emissions), by = year]
 setnames(emission_year, "V1", "totalem")
-with(emission_year, 
-     plot(year, totalem, type = "b", col = "blue",
-          main = "Emissions", xlab = "Year", 
-          ylab = "Totla Emission in 3 Years (ton)")
-     )
 
-# Should try to make the plot preetier...
+# plot the result using base system and save to png.
+png("plot1.png", bg = "transparent")
+with(emission_year,
+     plot(year, totalem, type = "b", col = "blue", pch = 16, lwd = 2,
+          main = "Totla Emission in 3 Years", xlab = "Year", 
+          ylab = "Emissions (ton)")
+     )
+dev.off()
