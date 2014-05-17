@@ -10,10 +10,12 @@ library(data.table)
 NEI <- data.table(NEI)
 SCC <- data.table(SCC)
 
-# Take sum of total emission in Baltimore, group by year
+# Identify SCC code with "coal" in short.names
 coal_scc <- SCC[grepl("coal", Short.Name, ignore.case = TRUE),
                 c("SCC", "Short.Name"), with = FALSE]
+# Merge SCC code with coal and create a new table including these rows
 nei_coalscc <- merge(NEI, coal_scc, by = "SCC")
+# Take sum over emissions grouped by year
 coal_em <- nei_coalscc[, sum(Emissions), by = year]
 setnames(coal_em, "V1", "coalem")
 
