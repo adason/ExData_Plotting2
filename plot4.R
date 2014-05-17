@@ -10,7 +10,7 @@ library(data.table)
 NEI <- data.table(NEI)
 SCC <- data.table(SCC)
 
-# Identify SCC code with "coal" in short.names
+# Identify SCC code with "coal" in EI.Sector
 coal_scc <- SCC[grepl("coal", EI.Sector, ignore.case = TRUE),
                 c("SCC", "EI.Sector"), with = FALSE]
 # Merge SCC code with coal and create a new table including these rows
