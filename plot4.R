@@ -11,8 +11,8 @@ NEI <- data.table(NEI)
 SCC <- data.table(SCC)
 
 # Identify SCC code with "coal" in short.names
-coal_scc <- SCC[grepl("coal", Short.Name, ignore.case = TRUE),
-                c("SCC", "Short.Name"), with = FALSE]
+coal_scc <- SCC[grepl("coal", EI.Sector, ignore.case = TRUE),
+                c("SCC", "EI.Sector"), with = FALSE]
 # Merge SCC code with coal and create a new table including these rows
 nei_coalscc <- merge(NEI, coal_scc, by = "SCC")
 # Take sum over emissions grouped by year
